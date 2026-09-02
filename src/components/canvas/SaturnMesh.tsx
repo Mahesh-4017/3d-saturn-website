@@ -309,10 +309,13 @@ export const SaturnMesh: React.FC<SaturnMeshProps> = ({ wireframe }) => {
       tMoon = Math.sin(normMoon * Math.PI); // Peaks at 1.0 in transition space between Work & Services
     }
 
+    const isMobile = window.innerWidth < 768;
+    const mobileScale = isMobile ? 0.65 : 1.0;
+
     let targetX = 0;
     let targetY = 0;
     let targetZ = 0;
-    let targetScale = 2.8;
+    let targetScale = 2.8 * mobileScale;
 
     let rawT = 0;
     if (p > 0.10) {
@@ -322,23 +325,23 @@ export const SaturnMesh: React.FC<SaturnMeshProps> = ({ wireframe }) => {
 
     if (p <= 0.10) {
       targetX = 0;
-      targetY = -3.4;
+      targetY = isMobile ? -2.2 : -3.4;
       targetZ = 0;
-      targetScale = 2.8;
+      targetScale = 2.8 * mobileScale;
     } else if (p <= 0.40) {
       const norm = (p - 0.10) / 0.30;
       targetX = THREE.MathUtils.lerp(0, 0, norm);
-      targetY = THREE.MathUtils.lerp(-3.4, 0.1, norm);
+      targetY = THREE.MathUtils.lerp(isMobile ? -2.2 : -3.4, 0.1, norm);
       targetZ = THREE.MathUtils.lerp(0, -3.8, norm);
-      targetScale = THREE.MathUtils.lerp(2.8, 0.95, norm);
+      targetScale = THREE.MathUtils.lerp(2.8 * mobileScale, 0.95 * mobileScale, norm);
     } else {
       const norm = (p - 0.40) / 0.60;
-      const sideSway = Math.sin(p * Math.PI * 10) * 1.8;
+      const sideSway = Math.sin(p * Math.PI * 10) * (isMobile ? 0.6 : 1.8);
 
       targetX = sideSway;
       targetY = THREE.MathUtils.lerp(0.1, -0.3, norm);
       targetZ = THREE.MathUtils.lerp(-3.8, -2.8, norm);
-      targetScale = THREE.MathUtils.lerp(0.95, 1.15, norm);
+      targetScale = THREE.MathUtils.lerp(0.95 * mobileScale, 1.15 * mobileScale, norm);
     }
 
     if (mainGroupRef.current) {

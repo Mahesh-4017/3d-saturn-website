@@ -75,6 +75,11 @@ h1, h2, h3, h4, .font-heading {
 }
 
 /* Lenis Smooth Scroll Fix */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 html.lenis, html.lenis body {
   height: auto;
 }
@@ -94,3 +99,19 @@ html.lenis, html.lenis body {
 .lenis.lenis-smooth iframe {
   pointer-events: none;
 }
+
+/* Hide scrollbar utility for touch/mobile filter pill bars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (max-width: 768px) {
+  .card-3d-tilt:hover {
+    transform: none;
+  }
+}
+

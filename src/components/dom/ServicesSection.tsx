@@ -101,7 +101,7 @@ const ServiceTimelineItem: React.FC<TimelineItemProps> = ({ item, index }) => {
   const isLeft = index % 2 === 0;
 
   return (
-    <div ref={itemRef} className="relative w-full my-6 md:my-10">
+    <div ref={itemRef} className="relative w-full my-4 md:my-10">
       {/* Central Y-Axis Glowing Node Dot */}
       <div className="absolute left-1/2 top-8 -translate-x-1/2 w-4 h-4 rounded-full bg-amber-400 border-2 border-black shadow-[0_0_15px_#fde047] z-20 hidden md:flex items-center justify-center">
         <div className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
@@ -113,11 +113,11 @@ const ServiceTimelineItem: React.FC<TimelineItemProps> = ({ item, index }) => {
           }`}
       >
         <div
-          className={`card-3d-tilt group p-7 sm:p-9 rounded-2xl bg-black/45 backdrop-blur-md border border-white/10 hover:border-amber-400/40 transition-all duration-1000 ease-out space-y-4 overflow-hidden transform ${inView
-            ? 'translate-x-0 opacity-100 scale-100'
+          className={`card-3d-tilt group p-5 sm:p-9 rounded-2xl bg-black/45 backdrop-blur-md border border-white/10 hover:border-amber-400/40 transition-all duration-700 ease-out space-y-3 sm:space-y-4 overflow-hidden transform ${inView
+            ? 'translate-x-0 translate-y-0 opacity-100 scale-100'
             : isLeft
-              ? '-translate-x-[140px] sm:-translate-x-[220px] opacity-0 pointer-events-none scale-95'
-              : 'translate-x-[140px] sm:translate-x-[220px] opacity-0 pointer-events-none scale-95'
+              ? 'translate-y-8 md:translate-y-0 md:-translate-x-[220px] opacity-0 pointer-events-none scale-95'
+              : 'translate-y-8 md:translate-y-0 md:translate-x-[220px] opacity-0 pointer-events-none scale-95'
             }`}
         >
           {/* Category Tag */}
@@ -125,13 +125,13 @@ const ServiceTimelineItem: React.FC<TimelineItemProps> = ({ item, index }) => {
             className={`flex items-center gap-2 text-xs font-mono text-amber-300/90 ${isLeft ? 'md:justify-end' : 'md:justify-start'
               }`}
           >
-            <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono">
+            <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] sm:text-[11px] font-mono">
               {item.categoryNumber} • {item.category}
             </span>
           </div>
 
           {/* Service Title */}
-          <h3 className="font-serif italic text-2xl sm:text-3xl font-normal text-white group-hover:text-amber-300 transition-colors duration-300">
+          <h3 className="font-serif italic text-xl sm:text-3xl font-normal text-white group-hover:text-amber-300 transition-colors duration-300">
             {item.title}
           </h3>
 
@@ -149,7 +149,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang }) => {
   return (
     <section
       id="services"
-      className="relative py-32 px-6 sm:px-12 max-w-7xl mx-auto space-y-20 select-none overflow-hidden"
+      className="relative py-16 sm:py-32 px-4 sm:px-12 max-w-7xl mx-auto space-y-12 sm:space-y-20 select-none overflow-hidden"
     >
       {/* Header */}
       <div className="max-w-3xl mx-auto text-center space-y-4">

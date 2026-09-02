@@ -122,44 +122,36 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ lang }) => {
 
             if (isActive) {
               if (stepProgress < 0.2) {
-                // Entering from side
-                transformClass = isLeft ? '-translate-x-[60vw] scale-95' : 'translate-x-[60vw] scale-95';
-                opacityClass = 'opacity-30';
+                // Entering
+                transformClass = 'translate-y-8 md:translate-y-0 opacity-30 scale-95 ' + (isLeft ? 'md:-translate-x-[60vw]' : 'md:translate-x-[60vw]');
               } else if (stepProgress > 0.8) {
-                // Exiting to side
-                transformClass = isLeft ? '-translate-x-[60vw] scale-95' : 'translate-x-[60vw] scale-95';
-                opacityClass = 'opacity-0';
+                // Exiting
+                transformClass = 'translate-y-8 md:translate-y-0 opacity-0 scale-95 ' + (isLeft ? 'md:-translate-x-[60vw]' : 'md:translate-x-[60vw]');
               } else {
-                // Fully active in position on left or right side
-                transformClass = 'translate-x-0 scale-100';
-                opacityClass = 'opacity-100 z-30';
+                // Fully active in position
+                transformClass = 'translate-x-0 translate-y-0 scale-100 opacity-100 z-30';
               }
-            } else if (index < activeStep) {
-              // Past step (exited)
-              transformClass = isLeft ? '-translate-x-[80vw]' : 'translate-x-[80vw]';
-              opacityClass = 'opacity-0 pointer-events-none';
             } else {
-              // Future step (waiting offscreen)
-              transformClass = isLeft ? '-translate-x-[80vw]' : 'translate-x-[80vw]';
-              opacityClass = 'opacity-0 pointer-events-none';
+              // Inactive steps
+              transformClass = 'translate-y-12 md:translate-y-0 opacity-0 pointer-events-none ' + (isLeft ? 'md:-translate-x-[80vw]' : 'md:translate-x-[80vw]');
             }
 
             return (
               <div
                 key={item.step}
-                className={`absolute w-full md:w-[46%] ${isLeft ? 'left-0 md:left-0' : 'right-0 md:right-0'
-                  } transition-all duration-700 ease-out ${transformClass} ${opacityClass}`}
+                className={`absolute w-full md:w-[46%] left-0 right-0 md:left-auto md:right-auto ${isLeft ? 'md:left-0' : 'md:right-0'
+                  } transition-all duration-700 ease-out ${transformClass}`}
               >
-                <div className="group relative p-7 sm:p-9 rounded-3xl  backdrop-blur-xs  hover:border-amber-400/10 transition-all duration-200 space-y-6 select-none overflow-hidden">
+                <div className="group relative p-5 sm:p-9 rounded-3xl bg-black/60 backdrop-blur-md border border-white/10 hover:border-amber-400/20 transition-all duration-300 space-y-4 sm:space-y-6 select-none overflow-hidden">
                   {/* Glowing Vertical Accent Line */}
                   <div
-                    className={`absolute top-0 bottom-0 w-1 ${isLeft ? 'left-0 md:left-auto md:right-0' : 'left-0'
+                    className={`absolute top-0 bottom-0 w-1 bg-amber-400/60 ${isLeft ? 'left-0 md:left-auto md:right-0' : 'left-0'
                       }`}
                   />
 
                   {/* Giant Translucent Background Step Number */}
                   <span
-                    className={`font-mono text-8xl sm:text-[10rem] font-extrabold text-amber-400/10 absolute -top-8 pointer-events-none select-none transition-colors duration-500 ${isLeft ? 'left-4 md:left-auto md:right-4' : 'left-4'
+                    className={`font-mono text-6xl sm:text-[10rem] font-extrabold text-amber-400/10 absolute -top-4 sm:-top-8 pointer-events-none select-none transition-colors duration-500 ${isLeft ? 'left-4 md:left-auto md:right-4' : 'left-4'
                       }`}
                   >
                     {item.step}
@@ -167,32 +159,32 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ lang }) => {
 
                   {/* Top Tag & Scroll Indicator */}
                   <div className="relative z-20 flex items-center justify-between">
-                    <span className="px-3.5 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 text-xs font-mono text-amber-300 tracking-wider">
+                    <span className="px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 text-[10px] sm:text-xs font-mono text-amber-300 tracking-wider">
                       STEP {item.step} OF 04
                     </span>
-                    <span className="text-xs font-mono text-gray-400 flex items-center gap-1.5">
+                    <span className="text-[10px] sm:text-xs font-mono text-gray-400 flex items-center gap-1.5">
                       <span>Scroll for next</span>
                       <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
                     </span>
                   </div>
 
                   {/* Step Title */}
-                  <h3 className="relative z-20 font-serif italic text-4xl sm:text-6xl font-normal text-white group-hover:text-amber-300 transition-colors duration-300 tracking-tight leading-tight">
+                  <h3 className="relative z-20 font-serif italic text-3xl sm:text-6xl font-normal text-white group-hover:text-amber-300 transition-colors duration-300 tracking-tight leading-tight">
                     {item.title}
                   </h3>
 
                   {/* Description Text */}
-                  <p className="relative z-20 text-sm sm:text-lg text-gray-300 font-light leading-relaxed max-w-lg">
+                  <p className="relative z-20 text-xs sm:text-lg text-gray-300 font-light leading-relaxed max-w-lg">
                     {item.desc}
                   </p>
 
                   {/* Bottom Milestone Indicator */}
-                  <div className="relative z-20 pt-6 border-t border-white/15 flex items-center justify-between text-xs font-mono text-gray-300">
-                    <div className="flex items-center gap-2 text-amber-300 font-medium">
-                      <CheckCircle2 className="w-4.5 h-4.5 text-amber-400" />
+                  <div className="relative z-20 pt-4 sm:pt-6 border-t border-white/15 flex items-center justify-between text-xs font-mono text-gray-300">
+                    <div className="flex items-center gap-2 text-amber-300 font-medium text-xs">
+                      <CheckCircle2 className="w-4 h-4 text-amber-400" />
                       <span>{item.milestone}</span>
                     </div>
-                    <span className="text-gray-400 text-[11px] tracking-widest">
+                    <span className="text-gray-400 text-[10px] sm:text-[11px] tracking-widest">
                       STAGE {item.step} / 04
                     </span>
                   </div>

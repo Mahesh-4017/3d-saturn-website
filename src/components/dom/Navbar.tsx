@@ -103,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Slide-out Ultra-Professional Sidebar Drawer */}
       <aside
-        className={`fixed top-0 right-0 h-full w-80 sm:w-96 bg-[#040406]/95 backdrop-blur-3xl border-l border-white/10 z-50 shadow-[0_0_100px_rgba(0,0,0,0.9)] flex flex-col justify-between p-8 sm:p-10 transition-transform duration-500 ease-out transform ${
+        className={`fixed top-0 right-0 h-full w-full max-w-[320px] sm:max-w-sm sm:w-96 bg-[#040406]/95 backdrop-blur-3xl border-l border-white/10 z-50 shadow-[0_0_100px_rgba(0,0,0,0.9)] flex flex-col justify-between p-6 sm:p-10 transition-transform duration-500 ease-out transform ${
           isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >

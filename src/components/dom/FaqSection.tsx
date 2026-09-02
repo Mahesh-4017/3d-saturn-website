@@ -37,34 +37,34 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang }) => {
   };
 
   return (
-    <section id="faq" className="relative py-32 px-6 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <section id="faq" className="relative py-16 sm:py-32 px-4 sm:px-6 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
         {/* Left Column: Sticky Section Header */}
-        <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
+        <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-4 sm:space-y-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-xs font-mono text-amber-300 tracking-widest uppercase">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>FAQ / PRE-PROJECT INFO</span>
           </div>
 
-          <h2 className="font-heading text-4xl sm:text-6xl font-extrabold text-white leading-tight tracking-tight">
+          <h2 className="font-heading text-3xl sm:text-6xl font-extrabold text-white leading-tight tracking-tight">
             Everything You Need <br />
             <span className="font-serif italic font-normal bg-gradient-to-r from-amber-300 via-amber-400 to-cyan-400 bg-clip-text text-transparent">
               To Know Before We Begin
             </span>
           </h2>
 
-          <p className="text-gray-300 font-light text-base sm:text-lg leading-relaxed max-w-md">
+          <p className="text-gray-300 font-light text-sm sm:text-lg leading-relaxed max-w-md">
             Common questions regarding timeline, WebGL tech stacks, partnership models, and end-to-end delivery process.
           </p>
 
-          <div className="pt-4 flex items-center gap-3 text-xs font-mono text-gray-400">
+          <div className="pt-2 sm:pt-4 flex items-center gap-3 text-xs font-mono text-gray-400">
             <Sparkles className="w-4 h-4 text-amber-400" />
             <span>Have custom inquiries? Feel free to drop a line below.</span>
           </div>
         </div>
 
         {/* Right Column: Numbered Editorial Accordion */}
-        <div className="lg:col-span-7 space-y-4">
+        <div className="lg:col-span-7 space-y-3 sm:space-y-4">
           {FAQ_ITEMS.map((item, idx) => {
             const isOpen = openIdx === idx;
             const stepNum = (idx + 1).toString().padStart(2, '0');
@@ -80,25 +80,25 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang }) => {
               >
                 <button
                   onClick={() => toggleFaq(idx)}
-                  className="w-full p-6 sm:p-8 text-left flex items-start justify-between gap-6 focus:outline-none"
+                  className="w-full p-4 sm:p-8 text-left flex items-start justify-between gap-4 sm:gap-6 focus:outline-none"
                 >
-                  <div className="flex items-start gap-4 sm:gap-6">
-                    <span className="font-mono text-xs sm:text-sm font-bold text-amber-400/80 pt-1">
+                  <div className="flex items-start gap-3 sm:gap-6">
+                    <span className="font-mono text-xs sm:text-sm font-bold text-amber-400/80 pt-0.5 sm:pt-1">
                       {stepNum}
                     </span>
-                    <h3 className="font-heading font-bold text-base sm:text-xl text-white group-hover:text-amber-300 transition-colors leading-snug">
+                    <h3 className="font-heading font-bold text-sm sm:text-xl text-white group-hover:text-amber-300 transition-colors leading-snug">
                       {item.q}
                     </h3>
                   </div>
 
                   <div
-                    className={`shrink-0 p-2.5 rounded-xl transition-all duration-300 ${
+                    className={`shrink-0 p-2 sm:p-2.5 rounded-xl transition-all duration-300 ${
                       isOpen
                         ? 'bg-amber-400 text-black rotate-180 shadow-[0_0_15px_#fde047]'
                         : 'bg-white/10 text-white group-hover:bg-white/20'
                     }`}
                   >
-                    <ChevronDown className="w-4 h-4" />
+                    <ChevronDown className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
                   </div>
                 </button>
 

@@ -30,7 +30,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, lan
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-      <div className="glass-panel p-8 rounded-3xl border border-white/20 shadow-2xl max-w-lg w-full relative">
+      <div className="glass-panel p-5 sm:p-8 rounded-3xl border border-white/20 shadow-2xl max-w-lg w-full relative max-h-[90vh] overflow-y-auto">
         <button
           onClick={onClose}
           className="absolute top-6 right-6 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"

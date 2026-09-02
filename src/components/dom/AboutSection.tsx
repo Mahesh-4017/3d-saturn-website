@@ -88,7 +88,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang }) => {
 
       {/* Transparent + Backdrop Blur Floating Glass Panel with Slow Smooth Staggered Scroll Reveal */}
       <div
-        className={`fixed bottom-0 left-0 right-0 w-full bg-black/60 backdrop-blur-2xl border-t border-amber-400/30 z-40 transition-all duration-1000 ease-out transform shadow-[0_-15px_50px_rgba(0,0,0,0.8)] ${isSectionActive && scrollStep > 0 && scrollStep < 4
+        className={`fixed bottom-0 left-0 right-0 w-full max-h-[85vh] overflow-y-auto bg-black/80 backdrop-blur-2xl border-t border-amber-400/30 z-40 transition-all duration-1000 ease-out transform shadow-[0_-15px_50px_rgba(0,0,0,0.8)] ${isSectionActive && scrollStep > 0 && scrollStep < 4
           ? 'translate-y-0 opacity-100'
           : 'translate-y-full opacity-0 pointer-events-none'
           }`}
@@ -96,7 +96,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang }) => {
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
           {/* Column 1: WEBGL & 3D */}
           <div
-            className={`p-7 sm:p-9 space-y-3 transition-all duration-1000 ease-out transform ${scrollStep >= 1
+            className={`p-5 sm:p-9 space-y-3 transition-all duration-1000 ease-out transform ${scrollStep >= 1
               ? 'translate-y-0 opacity-100'
               : 'translate-y-16 opacity-0 pointer-events-none'
               }`}
@@ -117,7 +117,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang }) => {
 
           {/* Column 2: SCROLL NARRATIVE */}
           <div
-            className={`p-7 sm:p-9 space-y-3 transition-all duration-1000 ease-out transform ${scrollStep >= 2
+            className={`p-5 sm:p-9 space-y-3 transition-all duration-1000 ease-out transform ${scrollStep >= 2
               ? 'translate-y-0 opacity-100'
               : 'translate-y-16 opacity-0 pointer-events-none'
               }`}
@@ -138,7 +138,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang }) => {
 
           {/* Column 3: FULL OWNERSHIP */}
           <div
-            className={`p-7 sm:p-9 space-y-3 transition-all duration-1000 ease-out transform ${scrollStep >= 3
+            className={`p-5 sm:p-9 space-y-3 transition-all duration-1000 ease-out transform ${scrollStep >= 3
               ? 'translate-y-0 opacity-100'
               : 'translate-y-16 opacity-0 pointer-events-none'
               }`}
